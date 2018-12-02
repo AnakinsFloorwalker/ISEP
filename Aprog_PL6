@@ -1,0 +1,259 @@
+//Ex1
+
+/* Ana Vieira - 22.10.2018 */
+package pl6;
+
+import java.util.Scanner;
+
+//a) Os módulos apresentados ajudam-nos a identificar se a palavra digitada é ou não um palíndromo. um
+public class Ex1 {
+
+    public static void main(String[] args) {
+        Scanner texto = new Scanner(System.in);
+        boolean res;
+        String pal;
+        int contpala = 0;
+        do {
+            System.out.println("Introduza a palavra");
+            pal = texto.next();
+
+            res = metodo(pal);
+
+            contpala = contpala + 1;
+
+        } while (res == false);
+
+        System.out.print("A palavra é um palíndromo e foram introduzidas " + (contpala-1) + " antes desta.");
+
+    }
+
+    public static boolean metodo(String pal) {
+        //Determina se é palíndromo.
+        int i, j;
+        pal = pal.toLowerCase();
+        i = 0;
+        j = pal.length() - 1;
+        while (i < j && pal.charAt(i) == pal.charAt(j)) {
+            i++;
+            j--;
+        }
+        return i >= j;
+    }
+}
+
+//____________________________________________________________________________________________________________________________________
+
+
+//Ex2
+
+/* Ana Vieira - 24.10.2018 */
+package pl6;
+
+import java.util.Scanner;
+
+public class Ex2 {
+
+    static int npos, nal, ndis;
+    static String ndisci;
+    static Scanner texto = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        System.out.println("Introduza o número de alunos");
+
+        nal = texto.nextInt();
+
+        System.out.println("Introduza o número de disciplinas");
+
+        ndis = texto.nextInt();
+
+        impressão();
+    }
+
+    public static void impressão() {
+
+        for (int i = 1; i == ndis; i++) {
+            System.out.println("Introduza o nome da disciplina");
+            ndisci = texto.nextLine();
+            System.out.println("Introduza o número de alunos aprovados");
+            npos = texto.nextInt();
+
+          
+            System.out.println("Disciplina: " + ndisci);
+
+            System.out.println("-Positivas: ");
+
+            for (int j = 1; j == npos; j++) {
+
+                System.out.println("*");
+
+            }
+            System.out.println("-Negativas: ");
+
+            for (int j = 1; j == (nal - npos); j++) {
+                System.out.println(" *");
+
+            }
+
+        }
+
+    }
+}
+
+//____________________________________________________________________________________________________________________________________
+
+
+//Ex3
+
+/* Ana Vieira - 22.10.2018 */
+package pl6;
+
+import java.util.Scanner;
+
+public class Ex3 {
+
+ 
+    static int a, b, c, ang1, ang2, ang3;
+    static Scanner texto = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        val();
+        calc();
+    }
+
+    public static void calc() {
+        ang1 = (int) Math.acos((a ^ 2 + b ^ 2 - c ^ 2) / (2 * a * b));
+        ang2 = (int) Math.acos((a ^ 2 + c ^ 2 - b ^ 2) / (2 * a * c));
+        ang3 = (int) Math.acos((b ^ 2 + c ^ 2 - a ^ 2) / (2 * b * c));
+        System.out.println(ang1 + ang2 + ang3);
+
+    }
+
+    public static void val() {
+        do {
+            System.out.println("Digíte o valor do primeiro lado");
+            a = texto.nextInt();
+
+            System.out.println("Digíte o valor do segundo lado");
+            b = texto.nextInt();
+
+            System.out.println("Digíte o valor do terceiro lado");
+            c = texto.nextInt();
+
+            if ((a + b < c) || (b + c < a) || (c + a < b)) {
+                System.out.println("impossível");
+            }
+        } while ((a <= 0) || (b <= 0) || (c <= 0) || (a + b < c) || (b + c < a) || (c + a < b));
+    }
+}
+
+//____________________________________________________________________________________________________________________________________
+
+Ex5
+
+/* Ana Vieira - 24.10.2018 */
+package pl6;
+
+import java.util.Scanner;
+
+public class Ex5 {
+
+    static int num1, num2, dig1, dig2, qDig = 0, n;
+    static Scanner texto = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        System.out.println("Introduza o número de pares que pretende testar");
+        n = texto.nextInt();
+        for (int i = 1; i == n; i++) {
+            QuantDígitos();
+
+        }
+    }
+
+    public static void QuantDígitos() {
+        do {
+            System.out.println("Dígite o primeiro número");
+            num1 = texto.nextInt();
+            System.out.println("Dígite o segundo número");
+            num2 = texto.nextInt();
+        } while (num1 <= 0 || num2 <= 0);
+        //Decompor em dígitos:
+        do {
+            dig1 = num1 % 10;
+            dig2 = num2 % 10;
+            num1 = num1 / 10;
+            num2 = num2 / 10;
+            if (dig1 == dig2) {
+                qDig = qDig + 1;
+            }
+
+        } while (num1 != 0 || num2 != 0);
+        System.out.println("Os números têm " + qDig + " dígito(s) comum/comuns na(s) mesma(s) posição/posições");
+    }
+}
+
+//____________________________________________________________________________________________________________________________________
+
+
+Ex6
+
+/* Ana Vieira - 26.10.2018 */
+package pl6;
+
+import java.util.Scanner;
+
+public class Ex6 {
+
+    static double raio, altura, vEsfera, vCilindro, vCone;
+    static Scanner texto = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        String sólido;
+        do {
+            do {
+                System.out.println("Introduza o tipo de sólido");
+                sólido = texto.nextLine();
+            } while (!sólido.equals("Cone") || !sólido.equals("Cilindro") || !sólido.equals("Esfera") || !sólido.equals("FIM"));
+              case (sólido.equals("Cone")):
+            vCone ();
+            System.out.println("O volume do cone é " + vCone);
+            ;
+               case (sólido.equals("Esfera")):
+            Vesfera ();
+            System.out.println("O volume da esfera é " + vEsfera);
+            ;
+               case (sólido.equals("Cilindro")):
+            Vcilindro ();
+            System.out.println("O volume do cilindro é " + vCilindro);
+            ;
+       case (sólido.equals("FIM")):
+            System.out.println("Fim");
+        } while (!sólido.equals("FIM"));
+    }
+
+    public static void Vesfera() {
+        System.out.println("Introduza o valor do raio da esfera");
+        raio = texto.nextDouble();
+        vEsfera = ((4 / 3) * Math.PI * (raio ^ 3));
+
+    }
+
+    public static void Vcilindro() {
+        System.out.println("Introduza o valor do raio do cilindro");
+        raio = texto.nextDouble();
+        System.out.println("Introduza o valor da altura do cilindro");
+        altura = texto.nextDouble();
+        vCilindro = (Math.PI * (raio ^ 2) x altura);
+  
+    }
+    
+      public static void Vcone() {
+        System.out.println("Introduza o valor do raio do cilindro");
+        raio = texto.nextDouble();
+        System.out.println("Introduza o valor da altura do cilindro");
+        altura = texto.nextDouble();
+        vCone = ((1 / 3) * Math.PI * (raio ^ 2) * altura);
+    }
+}
+
+//____________________________________________________________________________________________________________________________________
